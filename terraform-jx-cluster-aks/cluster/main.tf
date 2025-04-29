@@ -25,34 +25,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
-  role_based_access_control {
-    enabled = true
-
-    azure_active_directory {
-      managed = true
-    }
+  azure_active_directory_role_based_access_control {
+    managed                = true
+    admin_group_object_ids = var.admin_group_object_ids
   }
 
-  addon_profile {
-    dynamic "oms_agent" {
-      for_each = var.enable_log_analytics ? [""] : []
-      content {
-        enabled                    = var.enable_log_analytics
-        log_analytics_workspace_id = var.enable_log_analytics ? azurerm_log_analytics_workspace.cluster[0].id : ""
-      }
-    }
-    aci_connector_linux {
-      enabled = false
-    }
-    azure_policy {
-      enabled = false
-    }
-    http_application_routing {
-      enabled = false
-    }
-    kube_dashboard {
-      enabled = false
-    }
+  oms_agent {
+    log_analytics_workspace_id = var.log_analytics_workspace_id
   }
 }
 

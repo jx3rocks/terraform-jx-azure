@@ -142,3 +142,12 @@ variable "logging_retention_days" {
   type    = number
   default = 30
 }
+variable "admin_group_object_ids" {
+  description = "List of Azure AD group object IDs that will have cluster admin access."
+  type        = list(string)
+}
+
+variable "log_analytics_workspace_id" {
+  description = "Resource ID of the Log Analytics workspace for monitoring."
+  type        = string
+}

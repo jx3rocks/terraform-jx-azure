@@ -121,3 +121,11 @@ variable "enable_log_analytics" {
 variable "logging_retention_days" {
   type = number
 }
+variable "admin_group_object_ids" {
+  description = "List of Azure AD group object IDs that should be cluster admins"
+  type        = list(string)
+}
+variable "log_analytics_workspace_id" {
+  description = "The ID of the Log Analytics workspace to be used by the OMS agent"
+  type        = string
+}

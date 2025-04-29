@@ -1,11 +1,19 @@
 terraform {
-  required_version = ">= 0.13.2"
+  required_version = ">= 1.3"
   required_providers {
     random = {
       version = ">=3.0.0"
     }
     kubernetes = {
       version = ">=1.13.3"
+    }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "~> 2.45.0"
     }
   }
 }
@@ -76,6 +84,8 @@ module "cluster" {
   subnet_name                      = var.subnet_name
   subnet_cidr                      = var.subnet_cidr
   vnet_cidr                        = var.vnet_cidr
+  admin_group_object_ids           = var.admin_group_object_ids
+  log_analytics_workspace_id       = var.log_analytics_workspace_id
 }
 
 module "registry" {

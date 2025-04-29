@@ -6,7 +6,7 @@ terraform {
   required_version = ">= 0.13.2"
   required_providers {
     azurerm = {
-      version = ">=2.57.0"
+      version = "~> 3.0"
     }
   }
 }
@@ -63,6 +63,8 @@ module "cluster" {
   build_node_count                 = var.build_node_count
   min_build_node_count             = var.min_build_node_count
   max_build_node_count             = var.max_build_node_count
+  admin_group_object_ids           = var.admin_group_object_ids
+  log_analytics_workspace_id       = var.log_analytics_workspace_id
 }
 
 // ----------------------------------------------------------------------------
