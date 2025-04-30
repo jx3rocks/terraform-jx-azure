@@ -53,6 +53,8 @@ resource "azurerm_key_vault_access_policy" "jx" {
     "Get",
     "Set",
     "Delete",
+    "List",
+    "Purge",
   ]
 }
 
@@ -66,5 +68,7 @@ resource "azurerm_key_vault_access_policy" "terraform" {
     "Get",
     "Set",
     "Delete",
+    "List",
+    "Purge",
   ]
 }
